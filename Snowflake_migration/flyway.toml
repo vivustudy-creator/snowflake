@@ -1,0 +1,28 @@
+databaseType = "Snowflake"
+id = "74ef7280-ab71-4946-9bf9-a44a1f5ee69d"
+name = "Snowflake_migration"
+
+[flyway]
+callbackLocations = [ "filesystem:callbacks" ]
+locations = [ "filesystem:migrations" ]
+mixed = true
+outOfOrder = true
+schemaModelLocation = "schema-model"
+validateMigrationNaming = true
+
+[flywayDesktop]
+enableMigrations = true
+developmentEnvironment = "development"
+shadowEnvironment = "shadow"
+
+  [flywayDesktop.generate]
+  undoScripts = false
+
+[redgateCompare]
+filterFile = "filter.rgf"
+
+[environments.target1]
+url = "jdbc:snowflake://KAKFMVM-PBB25736.snowflakecomputing.com/?db=RAW&warehouse=COMPUTE_WH&role=SYSADMIN&JDBC_QUERY_RESULT_FORMAT=JSON"
+
+[environments.target2]
+url = "jdbc:snowflake://KAKFMVM-PBB25736.snowflakecomputing.com/?db=ANALYTICS&warehouse=COMPUTE_WH&role=ACCOUNTADMIN&JDBC_QUERY_RESULT_FORMAT=JSON"
